@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 3.2rem;
+  height: 100vh;
+  background-color: var(--clr-neutral-300);
+}
+
+:root {
+  --clr-primary: hsl(259, 100%, 65%);
+  --clr-secondary: hsl(0, 100%, 67%);
+
+  --clr-white: hsl(0, 0%, 100%);
+  --clr-neutral-000: hsl(0, 0%, 94%);
+  --clr-neutral-300: hsl(0, 0%, 86%);
+  --clr-neutral-500: hsl(0, 1%, 44%);
+  --clr-neutral-800: hsl(0, 0%, 8%);
+
+  /* sizes */
+
+  --s: 10rem;
+}
+
+.calc-container {
+  background-color: var(--clr-white);
+  border-radius: 3rem;
+  border-bottom-right-radius: 20rem;
+  max-width: 90rem;
+  width: 80rem;
+  padding: 6rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/************ INPUT************* */
+
+.data-input__container {
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.date__label {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-family: 700;
+  font-style: normal;
+  color: var(--clr-neutral-500);
+  letter-spacing: 0.4rem;
+}
+
+.date__input {
+  height: 7rem;
+  width: 16rem;
+  text-indent: 2rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--clr-neutral-800);
+  border: 0.1rem solid var(--clr-neutral-300);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.date__input:focus {
+  outline: none;
+  border: 0.1rem solid var(--clr-primary);
+}
+
+/************ BTN************* */
+
+.btn-line__box {
+  position: relative;
+  justify-content: end;
+  width: 100%;
+}
+
+.btn-container {
+  background-color: var(--clr-primary);
+  height: var(--s);
+  width: var(--s);
+  border-radius: var(--s);
+  z-index: 100;
+  justify-self: flex-end;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-container:hover {
+  background-color: black;
+}
+
+.btn {
+  width: auto;
+  height: 4rem;
+  z-index: 1000;
+}
+
+.btn-line {
+  top: 50%;
+  position: absolute;
+
+  width: 100%;
+  height: 0.1rem;
+  background-color: var(--clr-neutral-300);
+  z-index: 10;
+}
+
+/************ OUTCOME************* */
+
+.data,
+.data-outcome {
+  font-size: 10rem;
+  font-weight: 800;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.data-outcome {
+  color: var(--clr-primary);
+}
+
+/* MARGINS */
+
+.margin__b-s {
+  margin-bottom: 1rem;
+}
+
+/* ERROR STYLES */
+
+.error-text {
+  color: var(--clr-secondary);
+}
+
+.error-input {
+  border: 0.1rem solid var(--clr-secondary);
+}
+
+.input__error {
+  font-size: 1.4rem;
+  font-weight: 400;
+  font-style: italic;
+  padding: 0.5rem 0;
+}

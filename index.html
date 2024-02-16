@@ -6,6 +6,13 @@
 
     <!-- displays site properly based on user's device -->
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+      rel="stylesheet"
+    />
+
     <link
       rel="icon"
       type="image/png"
@@ -19,8 +26,56 @@
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   </head>
-  <body>
-    Day DD Month MM Year YYYY -- years -- months -- days
+  <body class="flex">
+    <section class="calc-container">
+      <div class="data-input__container flex">
+        <!-- DAY -->
+        <div class="date__box">
+          <p class="date__label margin__b-s error-text">Day</p>
+          <input
+            type="number"
+            readonly
+            class="date__input error-input"
+            placeholder="DD"
+          />
+          <p class="input__error error-text">This field is required</p>
+        </div>
+        <!-- MONTH -->
+        <div class="date__box">
+          <p class="date__label margin__b-s error-text">Month</p>
+          <input
+            type="number"
+            readonly
+            class="date__input error-input"
+            placeholder="MM"
+          />
+          <p class="input__error error-text hidden">This field is required</p>
+        </div>
+        <!-- YEAR -->
+        <div class="date__box">
+          <p class="date__label margin__b-s error-text">Year</p>
+          <input
+            type="number"
+            readonly
+            class="date__input error-input"
+            placeholder="YYYY"
+          />
+          <p class="input__error error-text hidden">This field is required</p>
+        </div>
+      </div>
+      <div class="btn-line__box flex">
+        <div class="btn-container flex">
+          <img src="./assets/images/icon-arrow.svg" class="btn" />
+        </div>
+        <div class="btn-line">&nbsp;</div>
+      </div>
+      <div>
+        <p class="data"><strong class="data-outcome">--</strong>years</p>
+        <p class="data"><strong class="data-outcome">--</strong>months</p>
+        <p class="data"><strong class="data-outcome">--</strong>days</p>
+      </div>
+    </section>
+
     <script src="./script.js"></script>
   </body>
 </html>
