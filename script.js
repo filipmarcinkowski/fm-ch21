@@ -3,7 +3,8 @@
 const now = new Date();
 console.log(now);
 
-const past = new Date('1985-08-26');
+const past = new Date('1800-02-31');
+console.log(past);
 const year1 = new Date('1985-08-26');
 const year2 = new Date('1986-08-26');
 const year3 = new Date('1987-08-26');
@@ -17,9 +18,9 @@ console.log(year2 - year1);
 console.log(year3 - year2);
 console.log(year4 - year3);
 
-console.log(Date);
-
 const dif = now - past;
+console.log(dif);
+console.log(new Date(1214394945345));
 
 console.log(now.getTime());
 console.log(past.getTime());
@@ -41,6 +42,16 @@ console.log(new Date(now).getFullYear() - new Date(past).getFullYear());
 console.log(new Date(now).getMonth() - new Date(past).getMonth());
 console.log(new Date(now).getDate() - new Date(past).getDate());
 // console.log(new Date(dif));
+
+// dayjs.extend();
+
+// dayjs().from(dayjs('1990-01-01')); // in 31 years
+const x = dayjs().from(dayjs('1990-01-01'));
+console.log(x);
+// const x = moment('19850826', 'YYYYMMDD').fromNow();
+// console.log(x);
+
+// const relativeTime = require('dayjs/plugin/relativeTime');
 
 // const y = Date.now() - pastDate.getTime();
 
