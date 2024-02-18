@@ -30,7 +30,7 @@ const pastMonth = past.getMonth() + 1;
 console.log(pastMonth);
 const pastYear = past.getFullYear();
 console.log(pastYear);
-// ////////////////////////////////////
+// /////////////////////////////////
 const day = now.getDate();
 console.log(day);
 const month = now.getMonth() + 1;
