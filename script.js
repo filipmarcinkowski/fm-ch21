@@ -1,4 +1,5 @@
-'use strict';
+import relativeTime from 'dayjs/plugin/relativeTime'; // load on demand
+('use strict');
 
 const now = new Date();
 console.log(now);
@@ -46,10 +47,18 @@ console.log(new Date(now).getDate() - new Date(past).getDate());
 // dayjs.extend();
 
 // dayjs().from(dayjs('1990-01-01')); // in 31 years
-const x = dayjs().from(dayjs('1990-01-01'));
-console.log(x);
-// const x = moment('19850826', 'YYYYMMDD').fromNow();
+// const x = dayjs().from(dayjs('1990-01-01'));
 // console.log(x);
+
+console.log('tutaj:');
+const a = dayjs('2024-02-08');
+console.log(a);
+
+dayjs.extend(relativeTime); // use plugin
+
+dayjs().format('Q Do k kk X x'); // more available formats
+
+// ///////////////////////////////////////
 
 // const relativeTime = require('dayjs/plugin/relativeTime');
 
