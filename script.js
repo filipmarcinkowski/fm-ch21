@@ -1,78 +1,109 @@
-import relativeTime from 'dayjs/plugin/relativeTime'; // load on demand
-('use strict');
+'use strict';
 
-const now = new Date();
-console.log(now);
+const dayInput = document.querySelector('.in__day');
+const monthInput = document.querySelector('.in__month');
+const yearInput = document.querySelector('.in__year');
+const btn = document.querySelector('.btn');
+const day = 24 * 60 * 60 * 1000;
 
-const past = new Date('1800-02-31');
-console.log(past);
-const year1 = new Date('1985-08-26');
-const year2 = new Date('1986-08-26');
-const year3 = new Date('1987-08-26');
-const year4 = new Date('1988-08-26');
-console.log(year1);
-console.log(year2);
-console.log(year3);
-console.log(year4);
+const objDate = {
+  day: 0,
+  month: 0,
+  year: 0,
+};
+const calcTime = {
+  day: 0,
+  month: 0,
+  year: 0,
+};
 
-console.log(year2 - year1);
-console.log(year3 - year2);
-console.log(year4 - year3);
+const calcA = function () {
+  // const dd = dayInput.value;
+  // const mm = monthInput.value;
+  // const yyyy = yearInput.value;
 
-const dif = now - past;
-console.log(dif);
-console.log(new Date(1214394945345));
+  const dd = 26;
+  const mm = 8;
+  const yyyy = 1985;
 
-console.log(now.getTime());
-console.log(past.getTime());
+  const pastDate = new Date(`${yyyy}-${mm}-${dd}`).getTime();
+  console.log(pastDate);
 
-const pastDay = past.getDate();
-console.log(pastDay);
-const pastMonth = past.getMonth() + 1;
-console.log(pastMonth);
-const pastYear = past.getFullYear();
-console.log(pastYear);
-// /////////////////////////////////
-const day = now.getDate();
-console.log(day);
-const month = now.getMonth() + 1;
-console.log(month);
-const year = now.getFullYear();
-console.log(year);
-console.log(new Date(now).getFullYear() - new Date(past).getFullYear());
-console.log(new Date(now).getMonth() - new Date(past).getMonth());
-console.log(new Date(now).getDate() - new Date(past).getDate());
-// console.log(new Date(dif));
+  objDate.day = dd;
+  objDate.month = mm;
+  objDate.year = yyyy;
+  console.log(objDate);
 
-// dayjs.extend();
+  const calcAge = function () {
+    let pastDays = 0; // counter
+    let curDate;
 
-// dayjs().from(dayjs('1990-01-01')); // in 31 years
-// const x = dayjs().from(dayjs('1990-01-01'));
-// console.log(x);
+    for (let i = pastDate; i <= now; i += day) {
+      curDate = i;
 
-console.log('tutaj:');
-const a = dayjs('2024-02-08');
-console.log(a);
+      // console.log(`${i}`);
+      // console.log(`${curDate}`);
+      if (curDate !== now) {
+        if (curYear !== pYear && curDate === dd && curMonth === mm) {
+          curYear++;
 
-dayjs.extend(relativeTime); // use plugin
+          if (curMonth !== pMonth) {
+          }
+        }
+        curDate = pastDate;
+      }
+      console.log(` nr: ${i}`);
 
-dayjs().format('Q Do k kk X x'); // more available formats
+      pastDays++; // counter
+    }
+    console.log(`minęło ${pastYears - 1} lat`);
+  };
 
-// ///////////////////////////////////////
+  // ////////////////////////////////////////////////////////
+};
 
-// const relativeTime = require('dayjs/plugin/relativeTime');
-
-// const y = Date.now() - pastDate.getTime();
+btn.addEventListener('click', calcA);
 
 // 24 * 60 * 60 * 1000
 
-// const dateDif = new Date(difMil);
-// console.log(dateDif);
+// const now = Date.now();
 
-// const years = dateDif.getFullYear() - 1970;
-// console.log(years);
+// const past = now - 3 * 24 * 60 * 60 * 1000;
 
-// const months = dateDif.getMonth();
-// console.log(months);
-// const days = dateDif.getDate();
-// console.log(days);
+// console.log(new Date(past).getDate());
+// console.log(new Date(past).getMonth() + 1);
+// console.log(new Date(past).getFullYear());
+
+// // const day = 1;
+// const day = 24 * 60 * 60 * 1000;
+// console.log(day);
+
+// const calc = function () {
+//   let pastYears = 0;
+//   for (let i = past; i <= now; i += day) {
+//     console.log(` nr: ${i}`);
+
+//     pastYears++;
+//   }
+//   console.log(`minęło ${pastYears - 1} lat`);
+// };
+
+// calc();
+
+// for (let i = 10; i <= 1; i - 1) {}
+
+// ///////////////////////////////////////////
+
+// const curDay = new Date(curDate).getDate();
+// const curMonth = new Date(curDate).getMonth() + 1;
+// const curYear = new Date(curDate).getFullYear();
+
+// const pDay = new Date(pastDate).getDate();
+// const pMonth = new Date(pastDate).getMonth() + 1;
+// const pYear = new Date(pastDate).getFullYear();
+
+// /////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////
+// const pDay = new Date(pastDate).getDate();
+// const pMonth = new Date(pastDate).getMonth() + 1;
+// const pYear = new Date(pastDate).getFullYear();
