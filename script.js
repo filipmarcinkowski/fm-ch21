@@ -18,13 +18,40 @@ const calcTime = {
   day: 0,
 };
 
+const reset = function () {
+  calcTime.year = 0;
+  calcTime.month = 0;
+  calcTime.day = 0;
+};
+
 const showCalc = function () {
   yearOutput.textContent = calcTime.year;
   monthOutput.textContent = calcTime.month;
   dayOutput.textContent = calcTime.day;
 };
 
+// /////////////////////////////////////////////////
+
+function useRegex(input) {
+  let year = /\d{4}/g;
+  let month = /1[0-2]|[0 ]?[1-9]/g;
+  let day = /([3][0-1])|([12][1-9])|[0 ]?[1-9]/g;
+
+  return year.test(input);
+}
+
+const checkInput = function (i) {
+  const input = i.value;
+
+  // const year =
+
+  // if()
+};
+// /////////////////////////////////////////////////
+
 const pastTime = function () {
+  reset();
+
   const dd = +dayInput.value;
   const mm = +monthInput.value;
   const yyyy = +yearInput.value;
@@ -47,16 +74,17 @@ const pastTime = function () {
           calcTime.year += 1;
           calcTime.month = 0;
           calcTime.day = 0;
-          showCalc();
+          // showCalc();
         } else if (curMonth !== mm && curDay === dd) {
           calcTime.month += 1;
           calcTime.day = 0;
-          showCalc();
+          // showCalc();
         } else if (curDay !== dd) {
           calcTime.day += 1;
-          showCalc();
+          // showCalc();
         }
       }
+      showCalc();
       // pastDays++; // counter
       // console.log(pastDays + 1);
     }
