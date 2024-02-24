@@ -9,7 +9,9 @@ const dayOutput = document.querySelector('.out__day');
 const monthOutput = document.querySelector('.out__month');
 const yearOutput = document.querySelector('.out__year');
 
-// const inputs = document.querySelectorAll('.date__input');
+const label = document.querySelector('.data__label');
+const inputs = document.querySelectorAll('.date__input');
+const errorMsg = document.querySelectorAll('.input__error');
 
 const day = 24 * 60 * 60 * 1000;
 const now = Date.now();
@@ -20,7 +22,7 @@ const calcTime = {
   day: 0,
 };
 
-const reset = function () {
+const resetCalcTime = function () {
   calcTime.year = 0;
   calcTime.month = 0;
   calcTime.day = 0;
@@ -36,57 +38,50 @@ const testDay = function (input) {
   const dExp = /^(0?[1-9]|[1-2][0-9]|3[01])$/;
   const a = dExp.test(input);
   const b = dd === new Date(pastDate).getDate();
-  const c = mm === new Date(pastDate).getMonth();
+  const c = mm === new Date(pastDate).getMonth() + 1;
   const validDay = a && b && c;
+
+  return validDay;
 };
+
 const testMonth = function (input) {
   const mExp = /^(0?[1-9]|1[1-2])$/;
   return mExp.test(input);
 };
+
 const testYear = function (input) {
   const yExp = /\d{4}/;
   const a = yExp.test(input);
   const b = +input <= 2024;
   const validYear = a && b;
+
+  return validYear;
+};
+
+const checkInput = function () {
+  inputs.forEach(function () {
+    if (!ddData || !mmData || !yyyyData) {
+    }
+  });
 };
 
 // /////////////////////////////////////////////////
 
-// function useRegex(input) {
-//   let year = /\d{4}/g;
-//   let month = /1[0-2]|[0 ]?[1-9]/g;
-//   let day = /([3][0-1])|([12][1-9])|[0 ]?[1-9]/g;
-
-//   return year.test(input);
-// }
-
-// const isValid =  function(data) {
-//   if (data) {
-//     +`${data}Input`.value;
-//   } else {
-//   }
-// }
-
 const pastTime = function () {
-  reset();
+  resetCalcTime();
 
-  // const dd = +dayInput.value;
-  // const mm = +monthInput.value;
-  // const yyyy = +yearInput.value;
-
-  const dd = testDay(dayInput.value);
-  console.log(dd);
-  const mm = testMonth(monthInput.value);
-  console.log(mm);
-  const yyyy = testYear(yearInput.value);
-  console.log(yyyy);
-
-  // past day timestamp
+  const dd = +dayInput.value;
+  const mm = +monthInput.value;
+  const yyyy = +yearInput.value;
   const pastDate = new Date(`${yyyy}-${mm}-${dd}`).getTime();
 
-  const calcAge = function () {
-    // let pastDays = 0; // counter
+  // const ddData = testDay(dayInput.value);
+  // const mmData = testMonth(monthInput.value);
+  // const yyyyData = testYear(yearInput.value);
 
+  // past day timestamp
+
+  const calcAge = function () {
     for (let i = pastDate; i <= now; i += day) {
       // current day timestamp
       const curDate = new Date(i);
@@ -106,8 +101,6 @@ const pastTime = function () {
           calcTime.day += 1;
         }
       }
-      // pastDays++; // counter
-      // console.log(pastDays + 1);
     }
     showCalc();
   };
