@@ -58,6 +58,8 @@ const testYear = function (input) {
   return validYear;
 };
 
+// ///////////////////////////////////////////////
+
 const checkInput = function () {
   inputs.forEach(function () {
     if (!ddData || !mmData || !yyyyData) {
