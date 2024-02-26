@@ -17,14 +17,12 @@ const dataBox = document.querySelectorAll('.date__box');
 
 const emptyMsg =
   '<p class="input__error error-text">This field is required</p>';
-let validMsg;
 const validDateMsg = `<p class="input__error error-text ">Must be a valid date</p>`;
 
 const pasteDate = {
   yyyy: '',
   mm: '',
   dd: '',
-  // past: new Date(`${pasteDate.yyyy}-${pasteDate.mm}-${pasteDate.dd}`).getTime(),
 };
 
 const day = 24 * 60 * 60 * 1000;
@@ -48,7 +46,7 @@ const showCalc = function () {
   dayOutput.textContent = calcTime.day;
 };
 
-const addErrorClr = function () {
+const addErrorClr = function (input, label) {
   input.classList.add('error-input');
   label.classList.add('error-text');
 };
@@ -59,7 +57,6 @@ const checkData = function () {
   pasteDate.dd = +dayInput.value;
   pasteDate.mm = +monthInput.value;
   pasteDate.yyyy = +yearInput.value;
-  console.log(pasteDate.yyyy);
 
   dataBox.forEach(checkInput);
 };
@@ -71,94 +68,83 @@ let y;
 const checkInput = function (e) {
   const label = e.querySelector('.date__label');
   const input = e.querySelector('.date__input');
+  const prevError = e.querySelector('.input__error');
+
+  if (prevError) {
+    prevError.remove();
+    label.classList.remove('error-text');
+    input.classList.remove('error-input');
+  }
+
+  const inputField = input.value;
 
   const validMsg = `<p class="input__error error-text">Must be ${
-    box.classList.contains('in__year')
+    input.classList.contains('in__year')
       ? `in the past`
       : `a valid ${label.textContent}`
   }</p>`;
 
-  const inputField = input.value;
+  const past = new Date(
+    `${pasteDate.yyyy}-${pasteDate.mm}-${pasteDate.dd}`
+  ).getTime();
 
   if (inputField === '') {
     e.insertAdjacentHTML('beforeend', emptyMsg);
-    input.classList.add('error-input');
-    label.classList.add('error-text');
+    addErrorClr(input, label);
   } else if (inputField !== '') {
     if (input.classList.contains('in__day')) {
-      console.log('test day');
-      d = testDay(inputField, input.parentElement);
+      d = testDay(inputField, validMsg, input, label, past);
     } else if (input.classList.contains('in__month')) {
-      console.log('test month');
-      m = testMonth(inputField, input.parentElement);
+      m = testMonth(inputField, validMsg, input, label);
     } else if (input.classList.contains('in__year')) {
-      console.log('test year');
-      y = testYear(inputField, input.parentElement);
+      y = testYear(inputField, validMsg, input, label);
     }
-
     if (d && m && y) {
-      console.log('dane są dobre');
-      pastTime();
+      pastTime(past);
     }
   }
 };
 
 // ////////////////////////////////////////////////
 
-const testDay = function (value, box) {
-  console.log('testuje dzień');
-
-  console.log(box);
-
-  const past = new Date(
-    `${pasteDate.yyyy}-${pasteDate.mm}-${pasteDate.dd}`
-  ).getTime();
-
+const testDay = function (value, validMsg, input, label, past) {
   const dExp = /^(0?[1-9]|[1-2][0-9]|3[01])$/;
   const a = dExp.test(value);
-
-  console.log(a);
   const b = pasteDate.dd === new Date(past).getDate();
   const c = pasteDate.mm === new Date(past).getMonth() + 1;
-  console.log(pasteDate.dd);
-  console.log(new Date(past).getDate());
-  console.log(past);
 
-  console.log(b);
-  console.log(c);
   if (!a) {
-    // box.insertAdjacentHTML('beforeend', validMsg);
-    box.insertAdjacentHTML('beforeend', 'filip');
-    // addErrorClr();
+    input.parentElement.insertAdjacentHTML('beforeend', validMsg);
+    addErrorClr(input, label);
   } else if (!(b && c)) {
-    box.insertAdjacentHTML('beforeend', validDateMsg);
-    // addErrorClr();
+    input.parentElement.insertAdjacentHTML('beforeend', validDateMsg);
+    addErrorClr(input, label);
   } else if (a && b && c) {
     return true;
   }
 };
 
-const testMonth = function (value, box) {
-  const mExp = /^(0?[1-9]|1[1-2])$/;
+const testMonth = function (value, validMsg, input, label) {
+  const mExp = /^(0?[1-9]|1[0-2])$/;
   const a = mExp.test(value);
 
   if (!a) {
-    box.insertAdjacentHTML('beforeend', validMsg);
-    addErrorClr();
+    input.parentElement.insertAdjacentHTML('beforeend', validMsg);
+    addErrorClr(input, label);
   } else {
     return true;
   }
 };
 
-const testYear = function (value, box) {
+const testYear = function (value, validMsg, input, label) {
   const yExp = /\d{4}/;
   const a = yExp.test(value);
   const b = +value <= 2024;
   const validYear = a && b;
 
   if (!validYear) {
-    box.insertAdjacentHTML('beforeend', validMsg);
-    addErrorClr();
+    input.parentElement.insertAdjacentHTML('beforeend', validMsg);
+    addErrorClr(input, label);
   } else {
     return true;
   }
@@ -166,16 +152,11 @@ const testYear = function (value, box) {
 
 // /////////////////////////////////////////////////
 
-const pastTime = function () {
+const pastTime = function (past) {
   resetCalcTime();
 
-  const past = new Date(
-    `${pasteDate.yyyy}-${pasteDate.mm}-${pasteDate.dd}`
-  ).getTime();
-
-  const calcAge = function () {
+  const calcAge = function (past) {
     for (let i = past; i <= now; i += day) {
-      // current day timestamp
       const curDate = new Date(i);
       const curDay = curDate.getDate();
       const curMonth = curDate.getMonth() + 1;
@@ -201,7 +182,7 @@ const pastTime = function () {
     showCalc();
   };
 
-  calcAge();
+  calcAge(past);
 };
 
 btn.addEventListener('click', checkData);
