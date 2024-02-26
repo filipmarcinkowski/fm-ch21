@@ -9,8 +9,8 @@ const dayOutput = document.querySelector('.out__day');
 const monthOutput = document.querySelector('.out__month');
 const yearOutput = document.querySelector('.out__year');
 
-const label = document.querySelector('.date__label');
-const input = document.querySelector('.date__input');
+// const label = document.querySelector('.date__label');
+// const input = document.querySelector('.date__input');
 const errorMsg = document.querySelector('.input__error');
 
 const dataBox = document.querySelectorAll('.date__box');

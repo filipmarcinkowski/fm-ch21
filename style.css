@@ -30,6 +30,7 @@ body {
   /* sizes */
 
   --s: 10rem;
+  --xs: 6rem;
 }
 
 .calc-container {
@@ -39,6 +40,7 @@ body {
   max-width: 90rem;
   width: 80rem;
   padding: 6rem;
+  margin: 2rem;
 }
 
 .flex {
@@ -47,13 +49,10 @@ body {
   align-items: center;
 }
 
-/* .hidden {
-  display: none;
-} */
-
 /************ INPUT************* */
 
 .data-input__container {
+  /* max-width: 80rem; */
   gap: 2rem;
   justify-content: flex-start;
   align-items: flex-start;
@@ -70,13 +69,15 @@ body {
 
 .date__input {
   height: 7rem;
-  width: 16rem;
+  flex-grow: 1;
+  max-width: 15rem;
+
   text-indent: 2rem;
   font-size: 3rem;
   font-weight: 700;
   color: var(--clr-neutral-800);
   border: 0.1rem solid var(--clr-neutral-300);
-  border-radius: 0.4rem;
+  border-radius: 0.8rem;
   cursor: pointer;
 }
 

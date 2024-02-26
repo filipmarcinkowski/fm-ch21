@@ -1,0 +1,67 @@
+@media (max-width: 47em) {
+  .date__input {
+    max-width: 18vw;
+    font-size: 2.4rem;
+  }
+
+  .data,
+  .data-outcome {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .calc-container {
+    border-radius: 3rem;
+    border-bottom-right-radius: 12rem;
+
+    width: 34rem;
+    padding: 5rem 2rem;
+    /* margin: 2rem; */
+  }
+  .data-input__container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .data-box {
+    width: 100%;
+  }
+
+  .date__input {
+    max-width: 10rem;
+    width: 9rem;
+    height: 5.4rem;
+    font-size: 2rem;
+    text-indent: 1.5rem;
+  }
+  .btn-line__box,
+  .data-input__container {
+    margin-bottom: 4rem;
+    gap: 1.5rem;
+  }
+  .btn-line__box {
+    position: relative;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .data,
+  .data-outcome {
+    font-size: 6rem;
+  }
+
+  .btn-container {
+    height: var(--xs);
+    width: var(--xs);
+    border-radius: var(--xs);
+  }
+
+  .btn {
+    height: 2.5rem;
+  }
+
+  .margin__b-s {
+    margin-bottom: 0.3rem;
+  }
+}
