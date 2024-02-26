@@ -3,7 +3,7 @@
 const dayInput = document.querySelector('.in__day');
 const monthInput = document.querySelector('.in__month');
 const yearInput = document.querySelector('.in__year');
-const btn = document.querySelector('.btn');
+const btn = document.querySelector('.btn-container');
 
 const dayOutput = document.querySelector('.out__day');
 const monthOutput = document.querySelector('.out__month');
